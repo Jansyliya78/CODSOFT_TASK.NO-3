@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CALCULATOR</title>
+    <link rel="stylesheet" href="CSS/styles.css">
+  </head>
+  <body>
+    <h></h>
+    <div id="calculator">
+      <input type="text" id="display" disabled />
+      <br />
+      <button id="clear" onclick="cleardisplay()">C</button>
+      <button onclick="appendToDisplay('(')">(</button>
+      <button onclick="appendToDisplay(')')">)</button>
+      <button class="button green" onclick="appendToDisplay('/')">/</button>
+      <br />
+      <button onclick="appendToDisplay('7')">7</button>
+      <button onclick="appendToDisplay('8')">8</button>
+      <button onclick="appendToDisplay('9')">9</button>
+      <button class="button green" onclick="appendToDisplay('*')">*</button>
+      <br />
+      <button onclick="appendToDisplay('4')">4</button>
+      <button onclick="appendToDisplay('5')">5</button>
+      <button onclick="appendToDisplay('6')">6</button>
+      <button class="button green" onclick="appendToDisplay('-')">-</button>
+      <br />
+      <button onclick="appendToDisplay('1')">1</button>
+      <button onclick="appendToDisplay('2')">2</button>
+      <button onclick="appendToDisplay('3')">3</button>
+      <button class="button green" onclick="appendToDisplay('+')">+</button>
+      <br />
+      <button onclick="appendToDisplay('0')">0</button>
+      <button onclick="appendToDisplay('.')">.</button>
+      <button onclick="appendToDisplay('%')">%</button>
+      <button class="button green" id="=" onclick="CalculateResult()">=</button>
+      <script>
+        function appendToDisplay(value) {
+            document.getElementById("display").value += value;
+        }
+        function cleardisplay() {
+            document.getElementById("display").value = "";
+        }
+        function CalculateResult() {
+            var expression = document.getElementById("display").value;
+            try {
+                expression = expression.replace(/(\d+)%/, '($1/100)');
+                var result = eval(expression);
+                document.getElementById("display").value = result;
+            } catch (error) {
+                document.getElementById("display").value = "error";
+            }
+        }
+    </script>
+    
+    </div>
+  </body>
+</html>
